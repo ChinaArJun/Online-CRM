@@ -13,6 +13,6 @@
 > git clone https://github.com/ChinaArJun/Online-CRM.git
 > 下载项目后需要导入sql文件,更改MySql用户名和密码即可
 
-### 2.预览 ~ Preview picture
+### 3.预览 ~ Preview picture
 ![1](https://github.com/ChinaArJun/Online-CRM/blob/master/crm.png)
-![2](https://github.com/ChinaArJun/Online-CRM/blob/master/crm.png)
+![2](https://github.com/ChinaArJun/Online-CRM/blob/master/%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7.png)
