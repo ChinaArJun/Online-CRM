@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.ansun.dao.CustomerMapper">
+	
+	<!-- 抽取SQL语句 -->
+	<sql id="customer_where">
+		<where>
+			<if test="custName != null and custName != ''">
+				and a.cust_name LIKE "%${custName}%"
+			</if>
+			<if test="custSource != null and custSource != ''">
+				and a.cust_source=#{custSource}
+			</if>
+			<if test="custIndustry != null and custIndustry != ''">
+				 and a.cust_industry=#{custIndustry}
+			</if>
+			<if test="custLevel != null and custLevel != ''">
+				 and a.cust_level=#{custLevel}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="findCustomerByVo" parameterType="cn.ansun.pojo.QueryVo" resultType="cn.ansun.pojo.Customer">
+		select a.cust_id,a.cust_name, b.dict_item_name cust_source, c.dict_item_name cust_industry, 
+			d.dict_item_name cust_level,a.cust_phone,a.cust_mobile, a.cust_linkman, a.cust_zipcode, 
+			a.cust_address, a.cust_createtime
+		from customer a
+		left join base_dict b on a.cust_source = b.dict_id
+		left join base_dict c on a.cust_industry = c.dict_id
+		left join base_dict d on a.cust_level = d.dict_id
+		
+		<include refid="customer_where"></include>
+		LIMIT #{start}, #{size} 
+	</select>
+	
+	<!-- 计算总条数 -->
+	<select id="findCustomerByVoCount" parameterType="cn.ansun.pojo.QueryVo" resultType="int">
+		select count(*)
+		from customer a
+		left join base_dict b on a.cust_source = b.dict_id
+		left join base_dict c on a.cust_industry = c.dict_id
+		left join base_dict d on a.cust_level = d.dict_id
+		
+		<include refid="customer_where"></include>
+	</select>
+	
+	<select id="findCustomeById" parameterType="Long" resultType="cn.ansun.pojo.Customer">
+		select * from customer where cust_id=#{id}
+	</select>
+	
+	<select id = "deleteCustomer" parameterType="Long" >
+	 	delete FROM customer WHERE cust_id = #{cust_id}
+	</select>
+	
+	
+	<!-- 更新成功 -->
+	<update id="updateCustomerById" parameterType="cn.ansun.pojo.Customer">
+		update customer 
+		
+		<!-- set标签作用:
+					第一可以自动添加set关键字, 
+					第二可以去掉最后一个更新的逗号 -->
+		<set>
+			<if test="cust_name != null and  cust_name != ''">
+				cust_name=#{cust_name} ,
+			</if>
+			<if test="cust_source != null and cust_source  != ''">
+				cust_source=#{cust_source},
+			</if>
+			<if test="cust_industry != null and  cust_industry != ''">
+				cust_industry=#{cust_industry},
+			</if>
+			<if test="cust_level != null and  cust_level != ''">
+				cust_level=#{cust_level},
+			</if>
+			<if test="cust_linkman != null and  cust_linkman != ''">
+				cust_linkman=#{cust_linkman},
+			</if>
+			<if test=" cust_phone != null and  cust_phone != ''">
+				cust_phone=#{cust_phone},
+			</if>
+			<if test="cust_mobile != null and cust_mobile  != ''">
+				cust_mobile=#{cust_mobile},
+			</if>
+			<if test="cust_zipcode != null and  cust_zipcode != ''">
+				cust_zipcode=#{cust_zipcode},
+			</if>
+			<if test="cust_address != null and   cust_address!= ''">
+				cust_address=#{cust_address},
+			</if>
+		</set>
+		where cust_id=#{cust_id}
+	</update>
+	
+	
+	
+</mapper>
