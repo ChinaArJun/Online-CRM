@@ -2,8 +2,6 @@
 
 手把手教你整合最简洁的SSM框架：SpringMVC + Spring + MyBatis
 
-> 快速预览地址：http://120.24.96.44/AJ-crm/customer/list.action
-
 ### 1.介绍 ~ Project introduction
 > 项目整体使用SSM框架：SpringMVC + Spring + MyBatis
 > WEB层加入了bootstrap框架，视觉效果非常棒👍
