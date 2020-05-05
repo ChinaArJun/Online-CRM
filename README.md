@@ -16,4 +16,7 @@
 ![1](https://github.com/ChinaArJun/Online-CRM/blob/master/crm.png)
 ![2](https://github.com/ChinaArJun/Online-CRM/blob/master/%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7.png)
 
+
+####       欢迎关注我的微信公众号
 ![微信公众号](http://qiniu.zhequtao.com/qrcode.jpg)
+
