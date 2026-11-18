@@ -6,7 +6,7 @@
 	<sql id="customer_where">
 		<where>
 			<if test="custName != null and custName != ''">
-				and a.cust_name LIKE "%${custName}%"
+				and a.cust_name LIKE CONCAT('%', #{custName}, '%')
 			</if>
 			<if test="custSource != null and custSource != ''">
 				and a.cust_source=#{custSource}
